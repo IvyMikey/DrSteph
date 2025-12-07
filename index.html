@@ -3,600 +3,1244 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-    <title>Independent Veterinarian - Horse & Pet Acupuncture</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>Dr. Stéphanie Vanhamme – Veterinarian | Acupuncture & TCM</title>
     <style>
+        :root {
+            --color-primary: #8B6914;
+            --color-primary-dark: #6B5010;
+            --color-primary-light: #C4A035;
+            --color-accent: #2D5A47;
+            --color-accent-light: #3D7A5F;
+            --color-cream: #FDF8F0;
+            --color-warm-white: #FFFEF9;
+            --color-text: #3D3328;
+            --color-text-light: #6B5D4D;
+            --color-border: #E8DFD0;
+            --color-dark: #2C2416;
+            --shadow-soft: 0 4px 20px rgba(59, 47, 30, 0.08);
+            --shadow-medium: 0 8px 30px rgba(59, 47, 30, 0.12);
+            --shadow-hover: 0 12px 40px rgba(59, 47, 30, 0.18);
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         html, body {
-			height: 100%; /* Ensures full viewport height */
-            font-family: Arial, sans-serif;
+            height: 100%;
+            font-family: 'Raleway', sans-serif;
             margin: 0;
             padding: 0;
-            color: #333;
-			display: flex;
-			flex-direction: column;
+            color: var(--color-text);
+            background: var(--color-warm-white);
+            display: flex;
+            flex-direction: column;
+            line-height: 1.7;
         }
-		.main-content {
-		    flex: 1; /* Pushes the footer down when content is short */
-		}
+
+        .main-content {
+            flex: 1;
+        }
+
+        /* Header */
         header {
-            background-color: DarkGoldenRod;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
             color: white;
-            padding: 1rem; 
-			align-items: center;
-			display: flex;
+            padding: 1rem 2rem;
+            align-items: center;
+            display: flex;
+            box-shadow: var(--shadow-medium);
+            position: relative;
+            z-index: 100;
         }
-		header img {
-			height: 60px; /* 10 times smaller than original size */
-			margin-right: 2rem;
-			padding: 1rem;
-			border-radius: 50%;
-			border: 1px solid #ddd;
-			padding: 5px;
-			transform: scale(1.3);
-		}
-		header img:hover {
-		  transform: scale(1.45);
-		}
-		header h1 {
-			margin: 0;
-			font-family: 'Playfair Display', serif;
-			font-size: 1.7rem;
-			font-weight: 700;
-			text-align: center;
-		}
+
+        header img {
+            height: 65px;
+            width: 65px;
+            object-fit: cover;
+            margin-right: 1.5rem;
+            border-radius: 50%;
+            border: 3px solid rgba(255,255,255,0.3);
+            transition: var(--transition-smooth);
+            flex-shrink: 0;
+        }
+
+        header img:hover {
+            transform: scale(1.08);
+            border-color: rgba(255,255,255,0.6);
+        }
+
+        header h1 {
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            line-height: 1.3;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Navigation */
         nav {
             display: flex;
             justify-content: center;
-            background-color: #333;
-		    flex-wrap: wrap; /* Allows wrapping if needed */
+            background: var(--color-dark);
+            flex-wrap: wrap;
+            padding: 0.25rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            position: sticky;
+            top: 0;
+            z-index: 99;
         }
+
         nav button {
-            color: white;
+            color: rgba(255,255,255,0.85);
             background: none;
             border: none;
-            padding: 0.8rem 1.5rem;
+            padding: 1rem 1.8rem;
             cursor: pointer;
-			font-size: 1.1rem;
-        }
-        nav button:hover {
-            background-color: #575757;
-        }
-		@media (max-width: 600px) {
-			header img {
-				height: 40px;
-			}
-		    header h1 {
-		    	font-size: 1.2rem;
-		    }
-			nav {
-		        gap: 10px; /* Reduce space between tabs */
-		    }
-
-		    nav button {
-		        font-size: 0.8rem; /* Make text smaller */
-		        padding: 6px 10px;
-		    }
-			
-		}
-        .tab-content {
-            display: none;
-            padding: 2rem;
-			flex-grow: 1; /* Ensures tab content fills available space */
-        }
-        .tab-content.active {
-            display: block;
-        }
-        .hero {
-            background-image: url('Backdrop1.jpeg');
-            background-size: cover;
-            background-position: center;
-            color: BlanchedAlmond;
-            text-align: center;
-            padding: 3rem 1rem;
-        }
-        .hero h1 {
-            margin: 0;
-            font-size: 2rem;
-        }
-		.about-container {
-		    display: flex;
-		    align-items: flex-start; /* Align image to start at the same height as text */
-		    gap: 20px; /* Space between text and image */
-			max-width: 1200px; /* Keeps content from stretching too wide */
-			margin-right: 0 auto; /* Centers the entire section */
-		}
-
-		.about-text {
-		    flex: 1; /* Makes text take available space */
-		}
-
-		.about-image img {
-			
-			max-width: 350px; /* Keeps image size controlled */
-		    height: auto;
-		    border-radius: 10px;
-		    flex-shrink: 0; /* Prevents the image from shrinking */
-		}
-		
-		
-
-		@media (max-width: 600px) { /* Mobile responsiveness */
-		    .about-container {
-		        flex-direction: column; /* Stack image below text on small screens */
-		        align-items: center;
-		    }
-		    .about-image img {
-		        max-width: 70%; /* Make image responsive */
-		    }
-			.hero h1 {
-				font-size: 1.2rem;
-			}
-		}
-		.custom-link {
-		    color: blue;
-		    text-decoration: underline;
-		    cursor: pointer; /* Ensures it looks clickable */
-		}
-
-		.custom-link:hover {
-		    text-decoration: none; /* Optional: Remove underline on hover */
-		}
-        .services-blocks {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 2rem;
-            padding: 2rem 1rem;
-        }
-        .container {
-            padding: 2rem;
-		}
-        .service {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 1rem;
-            max-width: 300px;
-            text-align: center;
-            background-color: #f9f9f9;
-        }
-        .service h3 {
-            color: #4CAF50;
-		}
-		.service:hover{
-			transform: scale(1.05);
-			border: 1px solid #777;
-			cursor: pointer;
-		}
-        footer {
-            text-align: center;
-            background-color: #333;
-            color: white;
-            padding: 1rem;
-            margin-top: 2rem;
-			margin-top: auto; /* Pushes footer to the bottom */
-        }
-        footer a {
-            color: #4CAF50;
-            text-decoration: none;
-        }
-		
-/* Slideshow styles */
-        .slideshow-container {
+            font-size: 0.95rem;
+            font-family: 'Raleway', sans-serif;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: var(--transition-smooth);
             position: relative;
-            max-width: 100%;
-            margin: auto;
-            overflow: hidden;
         }
-        .slideshow-wrapper {
-            display: flex;
-            transition: transform 0.5s ease;
+
+        nav button::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: var(--color-primary-light);
+            transition: var(--transition-smooth);
+            border-radius: 3px 3px 0 0;
         }
-        .slideshow-image {
-            width: 33.33%;
-            flex-shrink: 0;
+
+        nav button:hover {
+            color: white;
+            background: rgba(255,255,255,0.08);
         }
-        .slideshow-dots {
-            text-align: center;
-            margin-top: 1rem;
+
+        nav button:hover::after {
+            width: 60%;
         }
-        .dot {
-            height: 12px;
-            width: 12px;
-            margin: 0 5px;
-            background-color: #bbb;
-            border-radius: 50%;
-            display: inline-block;
-            cursor: pointer;
+
+        nav button.active {
+            color: white;
         }
-        .dot.active {
-            background-color: #717171;
+
+        nav button.active::after {
+            width: 80%;
+            background: var(--color-primary-light);
         }
-		/* Language switcher */
+
+        /* Language Switcher */
         .language-switcher {
             position: fixed;
             top: 1rem;
             right: 1rem;
             display: flex;
             gap: 0.5rem;
+            z-index: 1000;
+            background: rgba(255,255,255,0.95);
+            padding: 0.5rem;
+            border-radius: 30px;
+            box-shadow: var(--shadow-soft);
+            backdrop-filter: blur(10px);
         }
+
         .language-switcher img {
-            width: 31px;
-            height: 22px;
+            width: 28px;
+            height: 20px;
             cursor: pointer;
-            border: 1px solid transparent;
-            border-radius: 50%;
-			object-fit: cover;
+            border: 2px solid transparent;
+            border-radius: 4px;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+            opacity: 0.6;
         }
+
+        .language-switcher img:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
         .language-switcher img.active {
-            border-color: #4CAF50;
+            border-color: var(--color-primary);
+            opacity: 1;
         }
-		/* contact form*/
-		.contact-form {
-		    display: flex;
-		    flex-direction: column;
-		    max-width: 400px;
-		    margin-top: 1rem;
-		}
 
-		.contact-form label {
-		    margin-top: 0.5rem;
-		}
+        /* Tab Content */
+        .tab-content {
+            display: none;
+            padding: 3rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: fadeIn 0.4s ease-out;
+        }
 
-		.contact-form input,
-		.contact-form textarea {
-		    width: 100%;
-		    padding: 0.5rem;
-		    margin-top: 0.3rem;
-		    border: 1px solid #ccc;
-		    border-radius: 4px;
-		}
+        .tab-content.active {
+            display: block;
+        }
 
-		.contact-form button {
-		    margin-top: 1rem;
-		    background-color: #4CAF50;
-		    color: white;
-		    padding: 0.7rem;
-		    border: none;
-		    cursor: pointer;
-		}
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-		.contact-form button:hover {
-		    background-color: #45a049;
-		}
-		@media (max-width: 768px) { /* Mobile responsiveness */
-	        .language-switcher img {
-	            width: 22px;
-	            height: 22px;
-	        }
-			.service {
-				max-width: 150px;
-				font-size: 1rem;
-			}
-		}
+        /* Hero Section */
+        .hero {
+            background-image: linear-gradient(135deg, rgba(44, 36, 22, 0.7) 0%, rgba(45, 90, 71, 0.6) 100%), url('Backdrop1.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            text-align: center;
+            padding: 5rem 2rem;
+            margin: -3rem -2rem 3rem -2rem;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to top, var(--color-warm-white), transparent);
+        }
+
+        .hero h1 {
+            margin: 0 0 1rem 0;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 600;
+            text-shadow: 0 3px 15px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* About Container */
+        .about-container {
+            display: flex;
+            align-items: flex-start;
+            gap: 3rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--color-primary-dark);
+            margin-top: 0;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .about-text h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+            border-radius: 3px;
+        }
+
+        .about-text p {
+            color: var(--color-text-light);
+            font-size: 1.05rem;
+        }
+
+        .about-image img {
+            max-width: 320px;
+            height: auto;
+            border-radius: 16px;
+            box-shadow: var(--shadow-medium);
+            transition: var(--transition-smooth);
+        }
+
+        .about-image img:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .custom-link {
+            color: var(--color-accent);
+            text-decoration: none;
+            cursor: pointer;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition-smooth);
+        }
+
+        .custom-link::after {
+            content: '→';
+            transition: var(--transition-smooth);
+        }
+
+        .custom-link:hover {
+            color: var(--color-primary);
+        }
+
+        .custom-link:hover::after {
+            transform: translateX(4px);
+        }
+
+        /* Services Section */
+        .services-section h2 {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--color-primary-dark);
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .services-section h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+            margin: 1rem auto 0;
+            border-radius: 3px;
+        }
+
+        .services-blocks {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            padding: 0;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .service {
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            background: white;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+            transform: scaleX(0);
+            transition: var(--transition-smooth);
+        }
+
+        .service:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: transparent;
+        }
+
+        .service:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .service h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--color-primary-dark);
+            font-size: 1.2rem;
+            margin: 0 0 0.8rem 0;
+        }
+
+        .service p {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Contact Section on Home */
+        .contact-home {
+            background: linear-gradient(135deg, var(--color-cream) 0%, rgba(45, 90, 71, 0.08) 100%);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .contact-home h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--color-primary-dark);
+            margin-top: 0;
+        }
+
+        .contact-home p {
+            color: var(--color-text-light);
+            margin: 0.5rem 0;
+        }
+
+        .contact-home a {
+            color: var(--color-accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition-smooth);
+        }
+
+        .contact-home a:hover {
+            color: var(--color-primary);
+        }
+
+        .emergency-box {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            border-left: 4px solid var(--color-accent);
+            text-align: left;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .emergency-box strong {
+            color: var(--color-accent);
+        }
+
+        .phone-line {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0.5rem 0;
+            padding-left: 1rem;
+        }
+
+        .phone-line::before {
+            content: '→';
+            color: var(--color-primary);
+        }
+
+        /* Slideshow */
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            margin: 0 auto 2rem;
+            overflow: hidden;
+            border-radius: 16px;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .slideshow-wrapper {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .slideshow-image {
+            width: 33.33%;
+            flex-shrink: 0;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+        }
+
+        .slideshow-dots {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .dot {
+            height: 10px;
+            width: 10px;
+            margin: 0 6px;
+            background-color: var(--color-border);
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .dot:hover {
+            background-color: var(--color-primary-light);
+        }
+
+        .dot.active {
+            background-color: var(--color-primary);
+            transform: scale(1.2);
+        }
+
+        /* About Page Content */
+        .about-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--color-primary-dark);
+            margin-top: 2rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .about-content h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+            border-radius: 3px;
+        }
+
+        .about-content p {
+            color: var(--color-text-light);
+            font-size: 1.05rem;
+            text-align: justify;
+        }
+
+        /* TCM Page */
+        .tcm-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--color-primary-dark);
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .tcm-content h3::before {
+            content: '';
+            width: 4px;
+            height: 1.2em;
+            background: linear-gradient(180deg, var(--color-primary), var(--color-accent));
+            border-radius: 2px;
+        }
+
+        .tcm-content p {
+            color: var(--color-text-light);
+            font-size: 1.05rem;
+            text-align: justify;
+        }
+
+        /* Services Page */
+        .services-list h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--color-primary-dark);
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .services-list h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+            border-radius: 3px;
+        }
+
+        .services-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .services-list li {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--color-primary);
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition-smooth);
+        }
+
+        .services-list li:hover {
+            transform: translateX(8px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .services-list li strong {
+            color: var(--color-primary-dark);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+        }
+
+        .services-list p {
+            color: var(--color-text-light);
+            margin: 0.3rem 0;
+        }
+
+        .closing-message {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--color-primary);
+            margin-top: 3rem;
+            font-style: italic;
+        }
+
+        /* Contact Page */
+        .contact-page {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-page h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--color-primary-dark);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .contact-info-card {
+            background: linear-gradient(135deg, var(--color-cream) 0%, white 100%);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-soft);
+            text-align: center;
+        }
+
+        .contact-info-card p {
+            margin: 0.5rem 0;
+            color: var(--color-text-light);
+            font-size: 1.1rem;
+        }
+
+        .contact-info-card a {
+            color: var(--color-accent);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition-smooth);
+        }
+
+        .contact-info-card a:hover {
+            color: var(--color-primary);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .contact-form label {
+            margin-top: 1rem;
+            font-weight: 500;
+            color: var(--color-text);
+        }
+
+        .contact-form label:first-child {
+            margin-top: 0;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 1rem;
+            margin-top: 0.5rem;
+            border: 2px solid var(--color-border);
+            border-radius: 10px;
+            font-family: 'Raleway', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition-smooth);
+            background: var(--color-warm-white);
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            background: white;
+            box-shadow: 0 0 0 4px rgba(139, 105, 20, 0.1);
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-form button {
+            margin-top: 1.5rem;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Raleway', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .contact-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            background: var(--color-dark);
+            color: rgba(255,255,255,0.8);
+            padding: 2rem;
+            margin-top: auto;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        footer a {
+            color: var(--color-primary-light);
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 900px) {
+            .slideshow-image {
+                width: 50%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            header img {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+
+            header h1 {
+                font-size: 1.2rem;
+            }
+
+            nav button {
+                padding: 0.8rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .hero {
+                padding: 3rem 1.5rem;
+                background-attachment: scroll;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .about-container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .about-text h2::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .about-image img {
+                max-width: 80%;
+            }
+
+            .services-blocks {
+                grid-template-columns: 1fr;
+            }
+
+            .service {
+                padding: 1.5rem;
+            }
+
+            .contact-home {
+                padding: 2rem 1.5rem;
+            }
+
+            .language-switcher {
+                top: 0.5rem;
+                right: 0.5rem;
+                padding: 0.4rem;
+            }
+
+            .language-switcher img {
+                width: 24px;
+                height: 17px;
+            }
+
+            .tab-content {
+                padding: 2rem 1rem;
+            }
+
+            .slideshow-image {
+                width: 100%;
+            }
+
+            .contact-form,
+            .contact-info-card {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 0.5rem;
+            }
+
+            nav button {
+                padding: 0.6rem 0.8rem;
+                font-size: 0.75rem;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .services-section h2 {
+                font-size: 1.6rem;
+            }
+        }
     </style>
     <script>
-		function switchLanguage(lang) {
-			const elements = document.querySelectorAll('[data-lang]');
+        function switchLanguage(lang) {
+            const elements = document.querySelectorAll('[data-lang]');
+            elements.forEach(el => {
+                el.style.display = el.getAttribute('data-lang') === lang ? '' : 'none';
+            });
 
-			elements.forEach(el => {
-				el.style.display = el.getAttribute('data-lang') === lang ? 'block' : 'none';
-			});
+            const flags = document.querySelectorAll('.language-switcher img');
+            flags.forEach(flag => flag.classList.remove('active'));
+            document.getElementById(`flag-${lang}`).classList.add('active');
+        }
 
-			const flags = document.querySelectorAll('.language-switcher img');
-			flags.forEach(flag => flag.classList.remove('active'));
-			document.getElementById(`flag-${lang}`).classList.add('active');
-		}
-
-		document.addEventListener('DOMContentLoaded', () => {
-			switchLanguage('fr'); // Default to French
-		});
         function switchTab(tabId) {
             const tabs = document.querySelectorAll('.tab-content');
             tabs.forEach(tab => tab.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
+
+            // Update active nav button
+            const buttons = document.querySelectorAll('nav button');
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('onclick')?.includes(tabId)) {
+                    btn.classList.add('active');
+                }
+            });
         }
-		
-		document.addEventListener('DOMContentLoaded', () => {
-		            const wrapper = document.querySelector('.slideshow-wrapper');
-		            const slides = document.querySelectorAll('.slideshow-image');
-		            const dots = document.querySelectorAll('.dot');
-		            const totalSlides = slides.length;
-		            let currentIndex = 0;
-		            let direction = 1;
 
-		            // Auto-scroll
-		            setInterval(() => {
-		                currentIndex += direction;
-		                if (currentIndex >= totalSlides - 3) {
-		                    currentIndex = totalSlides - 3;
-		                    direction = -1;
-		                } else if (currentIndex < 0) {
-		                    currentIndex = 1;
-		                    direction = 1;
-		                }
-		                updateSlidePosition();
-		            }, 3000);
+        document.addEventListener('DOMContentLoaded', () => {
+            switchLanguage('fr'); // Default to French
+            
+            // Set initial active nav button
+            document.querySelectorAll('nav button').forEach(btn => {
+                if (btn.getAttribute('onclick')?.includes('home')) {
+                    btn.classList.add('active');
+                }
+            });
 
-		            // Update slide position
-		            function updateSlidePosition() {
-		                wrapper.style.transform = `translateX(-${currentIndex * 33.33}%)`;
-		                updateDots();
-		            }
+            // Slideshow functionality
+            const wrapper = document.querySelector('.slideshow-wrapper');
+            const slides = document.querySelectorAll('.slideshow-image');
+            const dots = document.querySelectorAll('.dot');
+            const totalSlides = slides.length;
+            let currentIndex = 0;
+            let direction = 1;
+            let slidesVisible = 3;
 
-		            // Update active dot
-		            function updateDots() {
-		                dots.forEach((dot, index) => {
-							// Calculate the indices of the three active dots
-					        const firstVisible = currentIndex % totalSlides;
-					        const secondVisible = (firstVisible + 1) % totalSlides;
-					        const thirdVisible = (firstVisible + 2) % totalSlides;
+            function updateSlidesVisible() {
+                if (window.innerWidth <= 768) {
+                    slidesVisible = 1;
+                } else if (window.innerWidth <= 900) {
+                    slidesVisible = 2;
+                } else {
+                    slidesVisible = 3;
+                }
+            }
 
-					        // Add or remove the "active" class based on whether the dot is one of the active ones
-					        dot.classList.toggle(
-					            'active',
-					            index === firstVisible || index === secondVisible || index === thirdVisible
-					        );
-		                });
-		            }
+            updateSlidesVisible();
+            window.addEventListener('resize', () => {
+                updateSlidesVisible();
+                updateSlidePosition();
+            });
 
-		            // Manual navigation
-		            dots.forEach((dot, index) => {
-		                dot.addEventListener('click', () => {
-			                if (index >= totalSlides - 3) {
-			                    index = totalSlides - 3;
-							}
-		                    currentIndex = index;
-		                    direction = index === totalSlides - 1 ? -1 : 1;
-		                    updateSlidePosition();
-		                });
-		            });
-		        });
+            // Auto-scroll
+            setInterval(() => {
+                currentIndex += direction;
+                if (currentIndex >= totalSlides - slidesVisible) {
+                    currentIndex = totalSlides - slidesVisible;
+                    direction = -1;
+                } else if (currentIndex < 0) {
+                    currentIndex = 0;
+                    direction = 1;
+                }
+                updateSlidePosition();
+            }, 4000);
+
+            function updateSlidePosition() {
+                const slideWidth = 100 / slidesVisible;
+                wrapper.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+                updateDots();
+            }
+
+            function updateDots() {
+                dots.forEach((dot, index) => {
+                    const isActive = index >= currentIndex && index < currentIndex + slidesVisible;
+                    dot.classList.toggle('active', isActive);
+                });
+            }
+
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    let newIndex = index;
+                    if (newIndex > totalSlides - slidesVisible) {
+                        newIndex = totalSlides - slidesVisible;
+                    }
+                    currentIndex = newIndex;
+                    direction = index === totalSlides - 1 ? -1 : 1;
+                    updateSlidePosition();
+                });
+            });
+
+            updateSlidePosition();
+        });
     </script>
 </head>
 <body>
-	<div calss="main-content">
-		<div class="language-switcher">
-		        <img id="flag-en" src="https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg" alt="English" onclick="switchLanguage('en')">
-		        <img id="flag-fr" src="https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg" alt="Français" onclick="switchLanguage('fr')" class="active">
-		    </div>
-	    <header>
-        
-			<h1 data-lang="en"><img src="logo.jpeg" alt="Logo">Dr. Stéphanie Vanhamme – Equine Veterinarian specializing in Traditional Chinese Medicine for Horses and Small Animals</h1>
-			<h1 data-lang="fr" style="display: none;"><img src="logo.jpeg" alt="Logo">Dr Stéphanie Vanhamme – Vétérinaire équin spécialisée en Médecine Chinoise pour chevaux et petits animaux</h1>
-	    </header>
+    <div class="main-content">
+        <div class="language-switcher">
+            <img id="flag-en" src="https://upload.wikimedia.org/wikipedia/en/a/ae/Flag_of_the_United_Kingdom.svg" alt="English" onclick="switchLanguage('en')">
+            <img id="flag-fr" src="https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg" alt="Français" onclick="switchLanguage('fr')" class="active">
+        </div>
 
-	    <nav>
-	        <button data-lang="en" onclick="switchTab('home')">Home</button>
-	        <button data-lang="en" onclick="switchTab('about')">About me</button>
-			<button data-lang="en" onclick="switchTab('china')">Traditional Chinese Medicine</button>
-	        <button data-lang="en" onclick="switchTab('services')">Services</button>
-	        <button data-lang="en" onclick="switchTab('contact')">Contact</button>
-		
-	        <button data-lang="fr" onclick="switchTab('home')">Accueil</button>
-	        <button data-lang="fr" onclick="switchTab('about')">Présentation</button>
-			<button data-lang="fr" onclick="switchTab('china')">Médecine Chinoise</button>
-	        <button data-lang="fr" onclick="switchTab('services')">Services</button>
-	        <button data-lang="fr" onclick="switchTab('contact')">Contact</button>
-	    </nav>
+        <header>
+            <img src="logo.jpeg" alt="Logo Dr. Stéphanie Vanhamme">
+            <h1 data-lang="en">Dr. Stéphanie Vanhamme – Equine Veterinarian specializing in Traditional Chinese Medicine</h1>
+            <h1 data-lang="fr" style="display: none;">Dr Stéphanie Vanhamme – Vétérinaire équin spécialisée en Médecine Traditionnelle Chinoise</h1>
+        </header>
 
-	    <div id="home" class="tab-content active">
-	        <section class="hero">
-				<h1 data-lang="en">Holistic Care Combining Western and Chinese Medicine</h1>
-				<h1 data-lang="fr">Des soins holistiques, combinant la médecine occidentale et chinoise à domicile</h1>
-				<p data-lang="en">To offer a more integrative understanding of each pathology.</p>
-				<p data-lang="fr">Pour offrir une vision plus complète de chaque pathologie</p>
-	        </section>
-			<div class="about-container">
-			    <!-- Text Section -->
-			    <div class="about-text">
-			        <h2 data-lang="en">Welcome to Dr. Stéphanie Vanhamme’s website!</h2>
-			        <h2 data-lang="fr">Bienvenue sur le site du Dr Stéphanie Vanhamme !</h2>
-			        <p data-lang="en">I am an ambulatory equine veterinarian providing medical services in the Canton of Vaud, Geneva, and neighboring France.</p>
-			        <p data-lang="en"><strong>Languages Spoken:</strong> French, English, and Dutch</p>
-			        <p data-lang="fr">Vétérinaire équin ambulatoire offrant ses services médicaux dans le Canton de Vaud, Genève et en France voisine.</p>
-			        <p data-lang="fr"><strong>Langues parlées :</strong> français, anglais et néerlandais</p>
-			        <p data-lang="en">
-			            <a onclick="switchTab('about')" class="custom-link">Learn more</a>
-			        </p>
-			        <p data-lang="fr">
-			            <a onclick="switchTab('about')" class="custom-link">Savoir plus</a>
-			        </p>
-			    </div>
+        <nav>
+            <button data-lang="en" onclick="switchTab('home')" class="active">Home</button>
+            <button data-lang="en" onclick="switchTab('about')">About Me</button>
+            <button data-lang="en" onclick="switchTab('china')">Traditional Chinese Medicine</button>
+            <button data-lang="en" onclick="switchTab('services')">Services</button>
+            <button data-lang="en" onclick="switchTab('contact')">Contact</button>
 
-			    <!-- Image Section -->
-			    <div class="about-image">
-			        <img src="ImageAbout.jpeg" alt="Dr. Stéphanie Vanhamme" />
-			    </div>
-			</div>
-			<h2>Services</h2>
-				<div class="services-blocks">
-					<div class="service" onclick="switchTab('china')">
-						<h3 data-lang="en">Traditional Chinese Medicine</h3>
-						<h3 data-lang="fr" style="display: none;">Médecine traditionnelle chinoise</h3>
-						<p data-lang="en">Acupuncture, Chinese herbal medicine, Food Therapy, and Laser Therapy for horses and small animals.</p>
-						<p data-lang="fr" style="display: none;">Acupuncture, phytothérapie chinoise, thérapie alimentaire, thérapie au laser pour chevaux et petits animaux.</p>
-					</div>
-					<div class="service" onclick="switchTab('services')">
-						<h3 data-lang="en">General Veterinary Consultation for Horses</h3>
-						<h3 data-lang="fr" style="display: none;">Consultation Médecine générale pour chevaux</h3>
-						<p data-lang="en">Clinical exams (any illness, lameness, preventive care, pre-purchase exams, skin issues, emergency care), blood tests, ocular exams, biopsies, ultrasound exam and more.</p>
-						<p data-lang="fr" style="display: none;">Examens cliniques (maladie/prévention), urgences médicales, analyses sanguines, examen oculaire, échographie, etc.</p>
-					</div>
-					<div class="service" onclick="switchTab('services')">
-						<h3 data-lang="en">Ambulatory services for Dogs</h3>
-						<h3 data-lang="fr" style="display: none;">Services à domicile pour chiens</h3>
-						<p data-lang="en">Clinical exams (preventive care), vaccination, stool analysis, blood tests upon request, and ocular exams.</p>
-						<p data-lang="fr" style="display: none;">Examens cliniques (prévention), vaccination, coprologies, analyses sanguines sur demande, examen oculaire.</p>
-					</div>
-					<div class="service" onclick="switchTab('services')">
-						<h3 data-lang="en">Equine Dentistry</h3>
-						<h3 data-lang="fr" style="display: none;">Dentisterie pour chevaux</h3>
-						<p data-lang="en">Annual preventive care and management of oral discomforts.</p>
-						<p data-lang="fr" style="display: none;">Prévention annuelle, inconforts buccaux.</p>
-					</div>
-					<div class="service" onclick="switchTab('services')">
-						<h3 data-lang="en">Online Consultation</h3>
-						<h3 data-lang="fr" style="display: none;">Consultation en ligne</h3>
-						<p data-lang="en">Feel free to contact me via e-mail for an online consultation. I will respond as promptly as possible.</p>
-						<p data-lang="fr" style="display: none;">Veuillez me contacter par courriel pour une consultation à distance.</p>
-					</div>
-				</div>
-				
-	        <div class="contact">
-	            <h2 data-lang="en">Contact me</h2>
-				<h2 data-lang="fr">Contactez-moi</h2>
-	            <p>Dr. Stéphanie Vanhamme Vétérinaire</p>
-	            <p>+41 78.339.15.03</p>
-	            <p>Email: <a href="mailto:svanhamme87@gmail.com">svanhamme87@gmail.com</a></p>
-	            <p data-lang="en"><strong>In case of after-hour emergencies:</strong> a permanent service is provided in collaboration with the Veterinary Emergency Service of the Côte, available evenings, nights, and weekends.</p>
-				<p data-lang="en"><span>&#8680;</span> For horses, call 0900 075 012 </p>
-				<p data-lang="en"><span>&#8680;</span> For pets, call 0900 011 </p>
-		        <p data-lang="fr"><strong>Consultation d'urgence :</strong> une permanence le soir, la nuit et les week-ends est assuré en collaboration avec le Service d’Urgences Vétérinaires de la Côte</p>
-				<p data-lang="fr"><span>&#8680;</span> Pour les chevaux, composer le 0900 075 012 </p>
-				<p data-lang="fr"><span>&#8680;</span> Pour les petits animaux, composer le 0900 075 011 </p>
-	        </div>
-	    </div>
+            <button data-lang="fr" onclick="switchTab('home')" class="active">Accueil</button>
+            <button data-lang="fr" onclick="switchTab('about')">Présentation</button>
+            <button data-lang="fr" onclick="switchTab('china')">Médecine Chinoise</button>
+            <button data-lang="fr" onclick="switchTab('services')">Services</button>
+            <button data-lang="fr" onclick="switchTab('contact')">Contact</button>
+        </nav>
 
-	    <div id="about" class="tab-content">
-			<div class="slideshow-container">
-			        <div class="slideshow-wrapper">
-			            <img src="Image1.jpg" class="slideshow-image" alt="Slide 1">
-			            <img src="Image2.jpg" class="slideshow-image" alt="Slide 2">
-			            <img src="Image3.jpg" class="slideshow-image" alt="Slide 3">
-			            <img src="Image8.jpg" class="slideshow-image" alt="Slide 4">
-			            <img src="Image5.jpg" class="slideshow-image" alt="Slide 5">
-			            <img src="Image10.jpg" class="slideshow-image" alt="Slide 6">
-			            <img src="Image6.jpg" class="slideshow-image" alt="Slide 7">
-			            <img src="Image9.jpg" class="slideshow-image" alt="Slide 8">
-						<img src="Image7.jpg" class="slideshow-image" alt="Slide 9">
-						<img src="Image4.jpg" class="slideshow-image" alt="Slide 10">
-			        </div>
-					<div class="slideshow-dots">
-						<span class="dot active"></span>
-						<span class="dot active"></span>
-						<span class="dot active"></span>
-						<span class="dot"></span>
-						<span class="dot"></span>
-						<span class="dot"></span>
-						<span class="dot"></span>
-						<span class="dot"></span>
-						<span class="dot"></span>
-						<span class="dot"></span>
-					</div>
-			    </div>
-	        <h2 data-lang="en">Presentation</h2>        
-	        <p data-lang="en">Since my childhood, I’ve always felt a special connection with animals. I began riding horses at age 8, and it wasn’t long before I knew I wanted to become a veterinarian. After earning my veterinary degree from Ghent University in Belgium, I broadened my experience by volunteering at equine hospitals in the United States, England, and Australia, where I explored various specialized fields within equine medicine. I also worked as a voluntary veterinarian in Egypt, offering medical treatments to horses, donkeys and stray dogs.</p>
-			<p data-lang="en">I then practiced as an equine veterinarian in northern France. This hands-on experience enabled me to gain more advanced skills and deepen my knowledge through numerous conferences and additional training in the United States. I also participated in sterilization and care missions for stray animals, primarily dogs, in Nepal and India, which enabled me to expand my expertise by incorporating care for domestic animals in mixed practices (for horses and pets) in Belgium.</p>
-			<p data-lang="en">Motivated by a desire to be closer to the mountain, I relocated to the region in 2020, where I have worked as an equine veterinarian since.</p>
-			<p data-lang="en">Over the past several years, I have discovered the benefits of Traditional Chinese Medicine (TCM) for both horses and dogs. Through my experience in classical veterinary medicine, I have observed that for certain diseases, the underlying cause of the pathology is not well understood. As a result, the treatment often fails to provide a satisfactory and lasting solution, leading to a chronic condition. This awareness inspired me to look further and adopt a more integrative approach; one that views the entire organism and recognizes the connections between the different body systems.</p>
-			<p data-lang="en">Today, this holistic perspective allows me to better understand and treat each patient, offering a range of care tailored to each animal’s needs. In addition to acupuncture, I use other branches of TCM, such as dietary therapy and Chinese herbal medicine, which are valuable tools for treating illness, managing pain and preventing potential physical or mental dysfunction. My goal is to provide comprehensive care, aimed at achieving the optimal well-being of each animal.</p>
-		
-			<h2 data-lang="fr">Présentation</h2>
-			<p data-lang="fr">Depuis mon enfance, j’ai toujours eu une connexion particulière avec les animaux. J’ai commencé l’équitation à l’âge de 8 ans et, très vite, j’ai su que je voulais devenir vétérinaire. Après avoir obtenu mon diplôme en médecine vétérinaire à l’Université de Gand en 2011, j’ai enrichi mon expérience en travaillant comme bénévole dans plusieurs hôpitaux équins aux États-Unis, en Angleterre et en Australie, où j’ai exploré différents domaines spécialisés de la médecine équine. Je suis également partie travailler en Égypte, pour administrer des soins médicaux aux chevaux, ânes et chiens errants en tant que vétérinaire bénévole.</p>        
-			<p data-lang="fr">J’ai ensuite exercé ma profession de vétérinaire équin dans le nord de la France. Cette expérience de terrain m’a permis d’obtenir des compétences avancées et d’approfondir mes connaissances grâce à plusieurs congrès et formations complémentaires aux États-Unis et en Europe.</p>
-			<p data-lang="fr">J’ai également participé à des missions de stérilisation et de soins pour animaux errants, principalement des chiens, au Népal et en Inde, ce qui m’a permis de diversifier mon expertise en intégrant des soins aux animaux domestiques dans différents cabinets mixtes (chevaux et petits animaux) en Belgique.</p>        
-			<p data-lang="fr">Animée par le désir de me rapprocher des montagnes, je me suis installée dans la région en 2020, où depuis j’ai exercé principalement en tant que vétérinaire équin.</p>		
-			<p data-lang="fr">Depuis plusieurs années, j’ai découvert les bienfaits de la Médecine Traditionnelle Chinoise (MTC) pour les chevaux et les chiens. Grâce à mon expérience en médecine vétérinaire classique, j’ai constaté que pour certaines maladies, l’origine de la pathologie n’est pas bien comprise. En conséquence, le traitement ne permet souvent pas de créer une solution satisfaisante et permanente, menant à une maladie chronique. Cette prise de conscience m’a orientée vers une approche plus intégrative, qui considère l’organisme dans sa globalité et reconnaît les liens entre les différents systèmes du corps.</p>		
-			<p data-lang="fr">Aujourd’hui, cette approche holistique me permet de mieux comprendre et soigner chaque patient, en offrant un éventail de soins adaptés aux besoins de chaque animal. En complément de l’acupuncture, j’utilise d’autres branches de la MTC, notamment la thérapie par l’alimentation et la phytothérapie chinoise, qui sont des outils précieux pour aider à remettre en équilibre l’animal. Mon objectif est d’offrir une prise en charge complète, visant le bien-être optimal de chaque animal.</p>
-			
-	    </div>
-	
-		<div id="china" class="tab-content">
-	        <h3 data-lang="en">About Acupuncture</h3>		
-	        <p data-lang="en">Acupuncture, a pillar of Traditional Chinese Medicine (TCM) for approximately 3,500 years, is practiced worldwide for its preventive and therapeutic benefits. In TCM, physical and mental disorders are often linked to internal energy imbalances. Acupuncture aims to restore this balance by stimulating specific points on the body to improve the flow of energy, or "Qi," along pathways known as meridians.</p>
-	        <p data-lang="en">These meridians are directly connected to organs, allowing acupuncturists to influence organ health, strengthen the immune system, and foster a harmonious balance between body and mind. The insertion of acupuncture needles also triggers nervous system responses, creating local and systemic regulatory effects within the body.</p>
-	        <p data-lang="en">While acupuncture is often associated with pain relief, its benefits extend far beyond. Acupuncture is beneficial in various medical specialties for prevention, therapy, and rehabilitation of functional disorders (orthopedics, neurology), as well as psychosomatic or organic diseases (digestive, respiratory, etc.). Acupuncture stimulates the body’s self-regulatory abilities and capacity, encouraging a more lasting result. For more chronic cases, repetition of this stimulation may be needed to enable the body to rebalance itself.</p>
-	        <p data-lang="en">This approach considers the whole organism, including mental and emotional aspects. Rather than focusing solely on symptoms, acupuncture seeks to address the underlying cause of an issue.</p>
-			<p data-lang="en">In cases where the cause is irreversible, such as degenerative arthritis, Chinese medicine can help relieve pain and stiffness, reducing the need for long-term medication. With this holistic approach, acupuncture offers a natural and comprehensive solution for animal well-being, enhancing quality of life and reducing or avoiding dependency on medications.</p>
-		
-			<h3 data-lang="fr">Concernant l’acupuncture</h3>
-	        <p data-lang="fr">L’acupuncture, pilier de la Médecine Traditionnelle Chinoise (MTC) depuis environ 3500 ans, est pratiquée dans le monde entier pour son efficacité préventive et curative. En MTC, les troubles physiques et mentaux sont souvent liés à des déséquilibres énergétiques internes. L’acupuncture vise à restaurer cet équilibre en stimulant des points spécifiques du corps, afin d'améliorer la circulation de l'énergie, ou "Qi", à travers les voies énergétiques appelées méridiens.</p>
-	        <p data-lang="fr">Ces méridiens sont directement connectés aux organes, permettant ainsi à l’acupuncteur d’agir sur la santé des organes, de renforcer le système immunitaire et de favoriser une harmonie globale entre le corps et l’esprit. Les aiguilles d’acupuncture déclenchent également des réponses du système nerveux, générant des effets régulateurs localement et de manière globale dans l’organisme.</p>
-	        <p data-lang="fr">Bien que souvent associée au soulagement de la douleur, l’acupuncture offre bien plus. L’acupuncture est bénéfique dans de nombreuses spécialités médicales pour la prévention, la thérapie et la réhabilitation de troubles fonctionnels (orthopédie, neurologie), les maladies psychosomatiques ou organiques (maladies digestives, respiratoires, etc.). Elle stimule la capacité d’autorégulation du corps, encourageant une guérison plus durable. Particulièrement pour les problèmes chroniques, la répétition de cette stimulation peut être nécessaire pour obtenir un résultat plus favorable.</p>
-	        <p data-lang="fr">Cette approche considère l’ensemble de l’organisme, y compris les aspects mentaux et émotionnels. Plutôt que de se concentrer uniquement sur les symptômes, l’acupuncture recherche la cause sous-jacente du problème.</p>
-			<p data-lang="fr">Dans les cas où la cause est irréversible, comme une arthrose dégénérative, la médecine chinoise peut contribuer à atténuer les douleurs et raideurs, réduisant ainsi le besoin de traitements médicamenteux à long terme. Grâce à cette approche holistique, l’acupuncture offre une solution naturelle et complète pour le bien-être des animaux, favorisant une meilleure qualité de vie, en évitant ou limitant la dépendance de médicaments.</p>
-			<h3 data-lang="en">Chinese Pharmacotherapy</h2>
-			<p data-lang="en">Alongside acupuncture, which is considered the ‘external treatment,’ Traditional Chinese Medicine (TCM) has developed an ‘internal treatment’ for nearly every imbalance that can be identified in an animal’s diagnosis. The prescription of Chinese herbal medicine is based on a thorough Chinese diagnostic process. Nearly 5,000 different medicines are described in the literature, with monographs detailing their origins, properties, and actions. These remedies are available in various pharmaceutical forms: decoctions, powders, pills, extracts, granules, and external preparations, with decoction being the most commonly used form. Traditional pharmacotherapy is indicated for the treatment of both acute and chronic conditions.</p>
-			<h3 data-lang="en">Dietary Therapy – Nutrition:</h2>
-			<p data-lang="en">TCM examines the effect of different foods on the body and their role in maintaining health and treating diseases. Based on traditional diagnostic principles, foods are prescribed synergistically—either alone or in combination with other therapeutic methods. After implementing a tailored dietary therapy, follow-up is essential to ensure that the body is not moving out of balance in the opposite direction of the initial condition.</p>
-			<h3 data-lang="en">Laser Therapy:</h2>
-			<p data-lang="en">For animals sensitive to needles, laser therapy provides an alternative to acupuncture by stimulating acupuncture points without the use of needles. Laser therapy is also a valuable tool for promoting the healing of tendinitis, reducing inflammation, accelerating wound healing, and treating both acute and chronic pain or edema. Certain scars may also cause problems if they cross a meridian and can be treated through laser biostimulation. The laser uses seven different frequencies, developed by Dr. Paul Nogier, which are applied either alone or in combination depending on the pathology. The frequency of treatments may vary depending on the condition and the recommended duration required to restore physiological functions.</p>
-			<h3 data-lang="fr">Pharmacothérapie Chinoise</h2>
-			<p data-lang="fr">A côté de l’acupuncture, ce qui est considéré comme le ‘traitement externe’, la médecine Chinoise a développé un ‘traitement interne’ pour quasiment chaque déséquilibre que nous pouvons retrouver dans le diagnostic de l’animal. La prescription peut se faire une fois le diagnostic chinois a été posé. Près de 5000 médicaments sont décrits dans la littérature, sous forme de monographies relatant leur origine, leurs propriétés et leurs actions. Ils sont disponibles sous diverses formes galéniques : décoction, poudre, pilules, extraits, granulés et préparations à usage externe. La décoction est la forme la plus utilisée. La pharmacothérapie traditionnelle est indiquée aussi bien pour le traitement d'affections aiguës que chroniques.</p>
-			<h3 data-lang="fr">Thérapie alimentaire – diététique :</h2>
-			<p data-lang="fr">La diététique de la MTC étudie l’action des aliments sur l’organisme et leur utilité pour la conservation de la santé et le traitement des maladies. Sur la base des règles diagnostiques traditionnelles de la MTC, les aliments sont prescrits de manière synergique, seuls ou en association avec d’autres techniques de la médecine. Après la mise en place d’une thérapie alimentaire sur mesure, le suivi est essentiel pour assurer de ne pas déséquilibrer le corps dans le sens opposé de la maladie initial.</p>
-			<h3 data-lang="fr">Traitement au laser :</h2>
-			<p data-lang="fr">Pour les animaux sensibles aux aiguilles, le laser permet une alternative à l’acupuncture en stimulant les points d’acupuncture sans piqûre. Le laser est également un outil précieux pour favoriser la guérison des tendinites, pour lutter contre l’inflammation, accélérer la cicatrisation des plaies, et traiter les œdèmes ou douleurs aïgues ou chroniques. Certaines cicatrises peuvent également créer des problèmes si elles traversent un méridien et peuvent être traité par la biostimulation du laser. Le laser comporte 7 différentes fréquences, développé par le Dr Paul Nogier, utilisés seules ou en combinaison selon la pathologie. Une répétition plus ou moins fréquente peut être conseilleé en fonction de la pathologie et le temps préconisé pour obtenir une restauration des fonctions physiologiques.</p>
-		</div>
-	
-	    <div id="services" class="tab-content">
-	        <h2 data-lang="en">Services :</h2>
-			<h2 data-lang="fr">Services :</h2>
-	        <ul data-lang="en">
-	            <p><li><strong>Traditional Chinese Medicine Consultation for Horses, Dogs, and Cats:</strong> Acupuncture, Chinese pharmacotherapy (herbal medicine), food therapy, and laser therapy based on the principles of Traditional Chinese Medicine (TCM), tailored to the needs of each animal, whether for treatment of illness or preventive care.</li></p>
-			
-	            <p><li><strong>General Veterinary Consultation for Horses:</strong> Clinical examinations (for any illness, lameness, preventive care, pre-purchase exams, skin issues), blood tests, ocular exams, biopsies, laser therapy, ultrasound exam (orthopedic, abdominal and reproductive follow-up of mares).</li></p>
-			
-				<p><li><strong>Ambulatory services for Dogs:</strong> Clinical examinations (preventive care), home vaccination, stool analysis, blood tests upon request, and ocular exams.</li></p>
-				<p><li><strong>Equine Dentistry:</strong> Annual preventive care and management of oral discomforts.</li></p>
-	            <p><li><strong>Emergency Consultation:</strong> In case of an emergency, please don't hesitate to contact me at +41 78 339 15 03. After-hours emergencies are handled in collaboration with the Veterinary Emergency Service of the Côte, available evenings, nights, and weekends.</li></p>
-				<p><span>&#8680;</span> For horses, call 0900 075 012 </p>
-				<p><span>&#8680;</span> For pets, call 0900 075 011 </p>
-			
-	            <p><li><strong>Online Consultation:</strong> If an in-person consultation is not possible, feel free to contact me via email for an online consultation. I will respond as promptly as possible.</li></p>
-			
-	        </ul>
-			<ul data-lang="fr">
-	        <p><li><strong>Consultation en Médecine Traditionnelle Chinoise pour chevaux, chiens et chats :</strong> acupuncture, pharmaco/phytothérapie chinoise et thérapie alimentaire selon les principes de la MTC, dans le cadre d’une maladie ou en prévention, adaptés aux besoins de chaque animal.</li></p>
-		
-	        <p><li><strong>Consultation Médecine générale pour chevaux :</strong> examens cliniques (maladie, boiteries, prévention, achat, problèmes de peau), analyses sanguines, examen oculaire, biopsies, échographie locomoteur, abdominale et suivi du cycle et de la gestation de juments, etc.</li></p>
-		
-			<p><li><strong>Services à domicile pour chiens :</strong> examens cliniques (prévention), vaccination, coprologies, analyses sanguines sur demande et examen oculaire</li></p>
-			<p><li><strong>Dentisterie pour chevaux :</strong> prévention annuelle, inconforts buccaux</li></p>
-	        <p><li><strong>Consultation d'urgence :</strong> en cas d’urgence, n’hésitez pas à me contacter au +41 78 339 15 03. Les urgences en dehors des horaires d’ouverture sont en collaboration avec le Service d’Urgences Vétérinaires de la Côte, qui assure une permanence le soir, la nuit et les week-ends.</li></p>
-			<p><span>&#8680;</span> Pour les chevaux, composer le 0900 075 012 </p>
-			<p><span>&#8680;</span> Pour les petits animaux, composer le 0900 075 011 </p>
-		
-	        <p><li><strong>Consultation en ligne :</strong> Si une consultation sur place n’est pas possible pour vous, vous pouvez me contacter pour une consultation en ligne par courriel. Je vous répondrai dans les plus brefs délais.</li></p>
-			</ul>
-			<p></p> <br>
-	        <p data-lang="en">Looking forward to meeting you ~</p>
-			<p data-lang="fr">Au plaisir de vous rencontrer ~</p>
-	    </div>
+        <!-- HOME TAB -->
+        <div id="home" class="tab-content active">
+            <section class="hero">
+                <h1 data-lang="en">Holistic Care Combining Western and Chinese Medicine</h1>
+                <h1 data-lang="fr">Des soins holistiques, combinant la médecine occidentale et chinoise</h1>
+                <p data-lang="en">Offering a more integrative understanding of each pathology</p>
+                <p data-lang="fr">Pour offrir une vision plus complète de chaque pathologie</p>
+            </section>
 
-		<div id="contact" class="tab-content">
-		    <h2 data-lang="en">Contact me</h2>
-		    <h2 data-lang="fr">Contactez-moi</h2>
-    
-		    <p>Dr. Stéphanie Vanhamme Vétérinaire</p>
-		    <p>Route de la Branvaude 54</p>
-		    <p>CH-1290 Chavannes-des-Bois</p>
-		    <p>+41 78.339.15.03</p>
-		    <p>Email: <a href="mailto:svanhamme87@gmail.com">svanhamme87@gmail.com</a></p>
+            <div class="about-container">
+                <div class="about-text">
+                    <h2 data-lang="en">Welcome!</h2>
+                    <h2 data-lang="fr">Bienvenue !</h2>
+                    <p data-lang="en">I am an ambulatory equine veterinarian providing medical services in the Canton of Vaud, Geneva, and neighboring France.</p>
+                    <p data-lang="en"><strong>Languages Spoken:</strong> French, English, and Dutch</p>
+                    <p data-lang="fr">Vétérinaire équin ambulatoire offrant ses services médicaux dans le Canton de Vaud, Genève et en France voisine.</p>
+                    <p data-lang="fr"><strong>Langues parlées :</strong> français, anglais et néerlandais</p>
+                    <p data-lang="en">
+                        <a onclick="switchTab('about')" class="custom-link">Learn more about me</a>
+                    </p>
+                    <p data-lang="fr">
+                        <a onclick="switchTab('about')" class="custom-link">En savoir plus</a>
+                    </p>
+                </div>
+                <div class="about-image">
+                    <img src="ImageAbout.jpeg" alt="Dr. Stéphanie Vanhamme" />
+                </div>
+            </div>
 
-		    <!-- Contact Form -->
-		    <form action="https://formspree.io/f/xnnjzgjq" method="POST" class="contact-form">
-		        <label for="name" data-lang="en">Your Name:</label>
-		        <label for="name" data-lang="fr" style="display:none;">Votre Nom:</label>
-		        <input type="text" id="name" name="name" required>
+            <div class="services-section">
+                <h2>Services</h2>
+                <div class="services-blocks">
+                    <div class="service" onclick="switchTab('china')">
+                        <span class="service-icon">🌿</span>
+                        <h3 data-lang="en">Traditional Chinese Medicine</h3>
+                        <h3 data-lang="fr" style="display: none;">Médecine Traditionnelle Chinoise</h3>
+                        <p data-lang="en">Acupuncture, Chinese herbal medicine, Food Therapy, and Laser Therapy for horses and small animals.</p>
+                        <p data-lang="fr" style="display: none;">Acupuncture, phytothérapie chinoise, thérapie alimentaire et laser pour chevaux et petits animaux.</p>
+                    </div>
+                    <div class="service" onclick="switchTab('services')">
+                        <span class="service-icon">🐴</span>
+                        <h3 data-lang="en">Equine General Medicine</h3>
+                        <h3 data-lang="fr" style="display: none;">Médecine Générale Équine</h3>
+                        <p data-lang="en">Clinical exams, blood tests, ocular exams, biopsies, ultrasound and more.</p>
+                        <p data-lang="fr" style="display: none;">Examens cliniques, analyses sanguines, examen oculaire, échographie, etc.</p>
+                    </div>
+                    <div class="service" onclick="switchTab('services')">
+                        <span class="service-icon">🐕</span>
+                        <h3 data-lang="en">Ambulatory Services for Dogs</h3>
+                        <h3 data-lang="fr" style="display: none;">Services à Domicile pour Chiens</h3>
+                        <p data-lang="en">Clinical exams, vaccination, stool analysis, blood tests, and ocular exams.</p>
+                        <p data-lang="fr" style="display: none;">Examens cliniques, vaccination, coprologies, analyses sanguines, examen oculaire.</p>
+                    </div>
+                    <div class="service" onclick="switchTab('services')">
+                        <span class="service-icon">🦷</span>
+                        <h3 data-lang="en">Equine Dentistry</h3>
+                        <h3 data-lang="fr" style="display: none;">Dentisterie Équine</h3>
+                        <p data-lang="en">Annual preventive care and management of oral discomforts.</p>
+                        <p data-lang="fr" style="display: none;">Prévention annuelle et gestion des inconforts buccaux.</p>
+                    </div>
+                    <div class="service" onclick="switchTab('contact')">
+                        <span class="service-icon">💻</span>
+                        <h3 data-lang="en">Online Consultation</h3>
+                        <h3 data-lang="fr" style="display: none;">Consultation en Ligne</h3>
+                        <p data-lang="en">Contact me via email for remote consultations.</p>
+                        <p data-lang="fr" style="display: none;">Contactez-moi par courriel pour une consultation à distance.</p>
+                    </div>
+                </div>
+            </div>
 
-		        <label for="email" data-lang="en">Email or Phone:</label>
-		        <label for="email" data-lang="fr" style="display:none;">Email ou Téléphone:</label>
-		        <input type="text" id="email" name="email" required>
+            <div class="contact-home">
+                <h2 data-lang="en">Contact Me</h2>
+                <h2 data-lang="fr">Contactez-moi</h2>
+                <p><strong>Dr. Stéphanie Vanhamme</strong></p>
+                <p>+41 78 339 15 03</p>
+                <p>Email: <a href="mailto:svanhamme87@gmail.com">svanhamme87@gmail.com</a></p>
+                
+                <div class="emergency-box">
+                    <p data-lang="en"><strong>After-hours emergencies:</strong> A permanent service is provided in collaboration with the Veterinary Emergency Service of the Côte.</p>
+                    <p data-lang="fr"><strong>Urgences en dehors des heures :</strong> Une permanence est assurée en collaboration avec le Service d'Urgences Vétérinaires de la Côte.</p>
+                    <p class="phone-line" data-lang="en">For horses: <strong>0900 075 012</strong></p>
+                    <p class="phone-line" data-lang="en">For pets: <strong>0900 075 011</strong></p>
+                    <p class="phone-line" data-lang="fr">Pour les chevaux : <strong>0900 075 012</strong></p>
+                    <p class="phone-line" data-lang="fr">Pour les petits animaux : <strong>0900 075 011</strong></p>
+                </div>
+            </div>
+        </div>
 
-		        <label for="message" data-lang="en">Your Message:</label>
-		        <label for="message" data-lang="fr" style="display:none;">Votre Message:</label>
-		        <textarea id="message" name="message" rows="5" required></textarea>
+        <!-- ABOUT TAB -->
+        <div id="about" class="tab-content">
+            <div class="slideshow-container">
+                <div class="slideshow-wrapper">
+                    <img src="Image1.jpg" class="slideshow-image" alt="Dr. Vanhamme with horse">
+                    <img src="Image2.jpg" class="slideshow-image" alt="Veterinary care">
+                    <img src="Image3.jpg" class="slideshow-image" alt="Equine treatment">
+                    <img src="Image8.jpg" class="slideshow-image" alt="Animal care">
+                    <img src="Image5.jpg" class="slideshow-image" alt="Veterinary work">
+                    <img src="Image10.jpg" class="slideshow-image" alt="Horse care">
+                    <img src="Image6.jpg" class="slideshow-image" alt="Treatment session">
+                    <img src="Image9.jpg" class="slideshow-image" alt="Veterinary practice">
+                    <img src="Image7.jpg" class="slideshow-image" alt="Animal wellness">
+                    <img src="Image4.jpg" class="slideshow-image" alt="Holistic care">
+                </div>
+            </div>
+            <div class="slideshow-dots">
+                <span class="dot active"></span>
+                <span class="dot active"></span>
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
 
-		        <button type="submit" data-lang="en">Send Message</button>
-		        <button type="submit" data-lang="fr" style="display:none;">Envoyer le Message</button>
-		    </form>
-		</div>
-	</div>
-    
+            <div class="about-content">
+                <h2 data-lang="en">Presentation</h2>
+                <h2 data-lang="fr">Présentation</h2>
+                
+                <p data-lang="en">Since my childhood, I've always felt a special connection with animals. I began riding horses at age 8, and it wasn't long before I knew I wanted to become a veterinarian. After earning my veterinary degree from Ghent University in Belgium, I broadened my experience by volunteering at equine hospitals in the United States, England, and Australia, where I explored various specialized fields within equine medicine. I also worked as a voluntary veterinarian in Egypt, offering medical treatments to horses, donkeys and stray dogs.</p>
+                <p data-lang="en">I then practiced as an equine veterinarian in northern France. This hands-on experience enabled me to gain more advanced skills and deepen my knowledge through numerous conferences and additional training in the United States. I also participated in sterilization and care missions for stray animals, primarily dogs, in Nepal and India, which enabled me to expand my expertise by incorporating care for domestic animals in mixed practices (for horses and pets) in Belgium.</p>
+                <p data-lang="en">Motivated by a desire to be closer to the mountain, I relocated to the region in 2020, where I have worked as an equine veterinarian since.</p>
+                <p data-lang="en">Over the past several years, I have discovered the benefits of Traditional Chinese Medicine (TCM) for both horses and dogs. Through my experience in classical veterinary medicine, I have observed that for certain diseases, the underlying cause of the pathology is not well understood. As a result, the treatment often fails to provide a satisfactory and lasting solution, leading to a chronic condition. This awareness inspired me to look further and adopt a more integrative approach; one that views the entire organism and recognizes the connections between the different body systems.</p>
+                <p data-lang="en">Today, this holistic perspective allows me to better understand and treat each patient, offering a range of care tailored to each animal's needs. In addition to acupuncture, I use other branches of TCM, such as dietary therapy and Chinese herbal medicine, which are valuable tools for treating illness, managing pain and preventing potential physical or mental dysfunction. My goal is to provide comprehensive care, aimed at achieving the optimal well-being of each animal.</p>
+
+                <p data-lang="fr">Depuis mon enfance, j'ai toujours eu une connexion particulière avec les animaux. J'ai commencé l'équitation à l'âge de 8 ans et, très vite, j'ai su que je voulais devenir vétérinaire. Après avoir obtenu mon diplôme en médecine vétérinaire à l'Université de Gand en 2011, j'ai enrichi mon expérience en travaillant comme bénévole dans plusieurs hôpitaux équins aux États-Unis, en Angleterre et en Australie, où j'ai exploré différents domaines spécialisés de la médecine équine. Je suis également partie travailler en Égypte, pour administrer des soins médicaux aux chevaux, ânes et chiens errants en tant que vétérinaire bénévole.</p>
+                <p data-lang="fr">J'ai ensuite exercé ma profession de vétérinaire équin dans le nord de la France. Cette expérience de terrain m'a permis d'obtenir des compétences avancées et d'approfondir mes connaissances grâce à plusieurs congrès et formations complémentaires aux États-Unis et en Europe.</p>
+                <p data-lang="fr">J'ai également participé à des missions de stérilisation et de soins pour animaux errants, principalement des chiens, au Népal et en Inde, ce qui m'a permis de diversifier mon expertise en intégrant des soins aux animaux domestiques dans différents cabinets mixtes (chevaux et petits animaux) en Belgique.</p>
+                <p data-lang="fr">Animée par le désir de me rapprocher des montagnes, je me suis installée dans la région en 2020, où depuis j'ai exercé principalement en tant que vétérinaire équin.</p>
+                <p data-lang="fr">Depuis plusieurs années, j'ai découvert les bienfaits de la Médecine Traditionnelle Chinoise (MTC) pour les chevaux et les chiens. Grâce à mon expérience en médecine vétérinaire classique, j'ai constaté que pour certaines maladies, l'origine de la pathologie n'est pas bien comprise. En conséquence, le traitement ne permet souvent pas de créer une solution satisfaisante et permanente, menant à une maladie chronique. Cette prise de conscience m'a orientée vers une approche plus intégrative, qui considère l'organisme dans sa globalité et reconnaît les liens entre les différents systèmes du corps.</p>
+                <p data-lang="fr">Aujourd'hui, cette approche holistique me permet de mieux comprendre et soigner chaque patient, en offrant un éventail de soins adaptés aux besoins de chaque animal. En complément de l'acupuncture, j'utilise d'autres branches de la MTC, notamment la thérapie par l'alimentation et la phytothérapie chinoise, qui sont des outils précieux pour aider à remettre en équilibre l'animal. Mon objectif est d'offrir une prise en charge complète, visant le bien-être optimal de chaque animal.</p>
+            </div>
+        </div>
+
+        <!-- TCM TAB -->
+        <div id="china" class="tab-content">
+            <div class="tcm-content">
+                <h3 data-lang="en">About Acupuncture</h3>
+                <h3 data-lang="fr">Concernant l'acupuncture</h3>
+                
+                <p data-lang="en">Acupuncture, a pillar of Traditional Chinese Medicine (TCM) for approximately 3,500 years, is practiced worldwide for its preventive and therapeutic benefits. In TCM, physical and mental disorders are often linked to internal energy imbalances. Acupuncture aims to restore this balance by stimulating specific points on the body to improve the flow of energy, or "Qi," along pathways known as meridians.</p>
+                <p data-lang="en">These meridians are directly connected to organs, allowing acupuncturists to influence organ health, strengthen the immune system, and foster a harmonious balance between body and mind. The insertion of acupuncture needles also triggers nervous system responses, creating local and systemic regulatory effects within the body.</p>
+                <p data-lang="en">While acupuncture is often associated with pain relief, its benefits extend far beyond. Acupuncture is beneficial in various medical specialties for prevention, therapy, and rehabilitation of functional disorders (orthopedics, neurology), as well as psychosomatic or organic diseases (digestive, respiratory, etc.). Acupuncture stimulates the body's self-regulatory abilities and capacity, encouraging a more lasting result. For more chronic cases, repetition of this stimulation may be needed to enable the body to rebalance itself.</p>
+                <p data-lang="en">This approach considers the whole organism, including mental and emotional aspects. Rather than focusing solely on symptoms, acupuncture seeks to address the underlying cause of an issue.</p>
+                <p data-lang="en">In cases where the cause is irreversible, such as degenerative arthritis, Chinese medicine can help relieve pain and stiffness, reducing the need for long-term medication. With this holistic approach, acupuncture offers a natural and comprehensive solution for animal well-being, enhancing quality of life and reducing or avoiding dependency on medications.</p>
+
+                <p data-lang="fr">L'acupuncture, pilier de la Médecine Traditionnelle Chinoise (MTC) depuis environ 3500 ans, est pratiquée dans le monde entier pour son efficacité préventive et curative. En MTC, les troubles physiques et mentaux sont souvent liés à des déséquilibres énergétiques internes. L'acupuncture vise à restaurer cet équilibre en stimulant des points spécifiques du corps, afin d'améliorer la circulation de l'énergie, ou "Qi", à travers les voies énergétiques appelées méridiens.</p>
+                <p data-lang="fr">Ces méridiens sont directement connectés aux organes, permettant ainsi à l'acupuncteur d'agir sur la santé des organes, de renforcer le système immunitaire et de favoriser une harmonie globale entre le corps et l'esprit. Les aiguilles d'acupuncture déclenchent également des réponses du système nerveux, générant des effets régulateurs localement et de manière globale dans l'organisme.</p>
+                <p data-lang="fr">Bien que souvent associée au soulagement de la douleur, l'acupuncture offre bien plus. L'acupuncture est bénéfique dans de nombreuses spécialités médicales pour la prévention, la thérapie et la réhabilitation de troubles fonctionnels (orthopédie, neurologie), les maladies psychosomatiques ou organiques (maladies digestives, respiratoires, etc.). Elle stimule la capacité d'autorégulation du corps, encourageant une guérison plus durable. Particulièrement pour les problèmes chroniques, la répétition de cette stimulation peut être nécessaire pour obtenir un résultat plus favorable.</p>
+                <p data-lang="fr">Cette approche considère l'ensemble de l'organisme, y compris les aspects mentaux et émotionnels. Plutôt que de se concentrer uniquement sur les symptômes, l'acupuncture recherche la cause sous-jacente du problème.</p>
+                <p data-lang="fr">Dans les cas où la cause est irréversible, comme une arthrose dégénérative, la médecine chinoise peut contribuer à atténuer les douleurs et raideurs, réduisant ainsi le besoin de traitements médicamenteux à long terme. Grâce à cette approche holistique, l'acupuncture offre une solution naturelle et complète pour le bien-être des animaux, favorisant une meilleure qualité de vie, en évitant ou limitant la dépendance de médicaments.</p>
+
+                <h3 data-lang="en">Chinese Pharmacotherapy</h3>
+                <h3 data-lang="fr">Pharmacothérapie Chinoise</h3>
+                
+                <p data-lang="en">Alongside acupuncture, which is considered the 'external treatment,' Traditional Chinese Medicine (TCM) has developed an 'internal treatment' for nearly every imbalance that can be identified in an animal's diagnosis. The prescription of Chinese herbal medicine is based on a thorough Chinese diagnostic process. Nearly 5,000 different medicines are described in the literature, with monographs detailing their origins, properties, and actions. These remedies are available in various pharmaceutical forms: decoctions, powders, pills, extracts, granules, and external preparations, with decoction being the most commonly used form. Traditional pharmacotherapy is indicated for the treatment of both acute and chronic conditions.</p>
+                <p data-lang="fr">A côté de l'acupuncture, ce qui est considéré comme le 'traitement externe', la médecine Chinoise a développé un 'traitement interne' pour quasiment chaque déséquilibre que nous pouvons retrouver dans le diagnostic de l'animal. La prescription peut se faire une fois le diagnostic chinois a été posé. Près de 5000 médicaments sont décrits dans la littérature, sous forme de monographies relatant leur origine, leurs propriétés et leurs actions. Ils sont disponibles sous diverses formes galéniques : décoction, poudre, pilules, extraits, granulés et préparations à usage externe. La décoction est la forme la plus utilisée. La pharmacothérapie traditionnelle est indiquée aussi bien pour le traitement d'affections aiguës que chroniques.</p>
+
+                <h3 data-lang="en">Dietary Therapy – Nutrition</h3>
+                <h3 data-lang="fr">Thérapie alimentaire – diététique</h3>
+                
+                <p data-lang="en">TCM examines the effect of different foods on the body and their role in maintaining health and treating diseases. Based on traditional diagnostic principles, foods are prescribed synergistically—either alone or in combination with other therapeutic methods. After implementing a tailored dietary therapy, follow-up is essential to ensure that the body is not moving out of balance in the opposite direction of the initial condition.</p>
+                <p data-lang="fr">La diététique de la MTC étudie l'action des aliments sur l'organisme et leur utilité pour la conservation de la santé et le traitement des maladies. Sur la base des règles diagnostiques traditionnelles de la MTC, les aliments sont prescrits de manière synergique, seuls ou en association avec d'autres techniques de la médecine. Après la mise en place d'une thérapie alimentaire sur mesure, le suivi est essentiel pour assurer de ne pas déséquilibrer le corps dans le sens opposé de la maladie initial.</p>
+
+                <h3 data-lang="en">Laser Therapy</h3>
+                <h3 data-lang="fr">Traitement au laser</h3>
+                
+                <p data-lang="en">For animals sensitive to needles, laser therapy provides an alternative to acupuncture by stimulating acupuncture points without the use of needles. Laser therapy is also a valuable tool for promoting the healing of tendinitis, reducing inflammation, accelerating wound healing, and treating both acute and chronic pain or edema. Certain scars may also cause problems if they cross a meridian and can be treated through laser biostimulation. The laser uses seven different frequencies, developed by Dr. Paul Nogier, which are applied either alone or in combination depending on the pathology. The frequency of treatments may vary depending on the condition and the recommended duration required to restore physiological functions.</p>
+                <p data-lang="fr">Pour les animaux sensibles aux aiguilles, le laser permet une alternative à l'acupuncture en stimulant les points d'acupuncture sans piqûre. Le laser est également un outil précieux pour favoriser la guérison des tendinites, pour lutter contre l'inflammation, accélérer la cicatrisation des plaies, et traiter les œdèmes ou douleurs aïgues ou chroniques. Certaines cicatrises peuvent également créer des problèmes si elles traversent un méridien et peuvent être traité par la biostimulation du laser. Le laser comporte 7 différentes fréquences, développé par le Dr Paul Nogier, utilisés seules ou en combinaison selon la pathologie. Une répétition plus ou moins fréquente peut être conseilleé en fonction de la pathologie et le temps préconisé pour obtenir une restauration des fonctions physiologiques.</p>
+            </div>
+        </div>
+
+        <!-- SERVICES TAB -->
+        <div id="services" class="tab-content">
+            <div class="services-list">
+                <h2 data-lang="en">Services</h2>
+                <h2 data-lang="fr">Services</h2>
+
+                <ul data-lang="en">
+                    <li><strong>Traditional Chinese Medicine Consultation for Horses, Dogs, and Cats:</strong> Acupuncture, Chinese pharmacotherapy (herbal medicine), food therapy, and laser therapy based on the principles of Traditional Chinese Medicine (TCM), tailored to the needs of each animal, whether for treatment of illness or preventive care.</li>
+                    <li><strong>General Veterinary Consultation for Horses:</strong> Clinical examinations (for any illness, lameness, preventive care, pre-purchase exams, skin issues), blood tests, ocular exams, biopsies, laser therapy, ultrasound exam (orthopedic, abdominal and reproductive follow-up of mares).</li>
+                    <li><strong>Ambulatory Services for Dogs:</strong> Clinical examinations (preventive care), home vaccination, stool analysis, blood tests upon request, and ocular exams.</li>
+                    <li><strong>Equine Dentistry:</strong> Annual preventive care and management of oral discomforts.</li>
+                    <li><strong>Emergency Consultation:</strong> In case of an emergency, please don't hesitate to contact me at +41 78 339 15 03. After-hours emergencies are handled in collaboration with the Veterinary Emergency Service of the Côte, available evenings, nights, and weekends.
+                        <p class="phone-line">For horses: <strong>0900 075 012</strong></p>
+                        <p class="phone-line">For pets: <strong>0900 075 011</strong></p>
+                    </li>
+                    <li><strong>Online Consultation:</strong> If an in-person consultation is not possible, feel free to contact me via email for an online consultation. I will respond as promptly as possible.</li>
+                </ul>
+
+                <ul data-lang="fr">
+                    <li><strong>Consultation en Médecine Traditionnelle Chinoise pour chevaux, chiens et chats :</strong> acupuncture, pharmaco/phytothérapie chinoise et thérapie alimentaire selon les principes de la MTC, dans le cadre d'une maladie ou en prévention, adaptés aux besoins de chaque animal.</li>
+                    <li><strong>Consultation Médecine générale pour chevaux :</strong> examens cliniques (maladie, boiteries, prévention, achat, problèmes de peau), analyses sanguines, examen oculaire, biopsies, échographie locomoteur, abdominale et suivi du cycle et de la gestation de juments, etc.</li>
+                    <li><strong>Services à domicile pour chiens :</strong> examens cliniques (prévention), vaccination, coprologies, analyses sanguines sur demande et examen oculaire.</li>
+                    <li><strong>Dentisterie pour chevaux :</strong> prévention annuelle, inconforts buccaux.</li>
+                    <li><strong>Consultation d'urgence :</strong> en cas d'urgence, n'hésitez pas à me contacter au +41 78 339 15 03. Les urgences en dehors des horaires d'ouverture sont en collaboration avec le Service d'Urgences Vétérinaires de la Côte, qui assure une permanence le soir, la nuit et les week-ends.
+                        <p class="phone-line">Pour les chevaux : <strong>0900 075 012</strong></p>
+                        <p class="phone-line">Pour les petits animaux : <strong>0900 075 011</strong></p>
+                    </li>
+                    <li><strong>Consultation en ligne :</strong> Si une consultation sur place n'est pas possible pour vous, vous pouvez me contacter pour une consultation en ligne par courriel. Je vous répondrai dans les plus brefs délais.</li>
+                </ul>
+
+                <p class="closing-message" data-lang="en">Looking forward to meeting you ~</p>
+                <p class="closing-message" data-lang="fr">Au plaisir de vous rencontrer ~</p>
+            </div>
+        </div>
+
+        <!-- CONTACT TAB -->
+        <div id="contact" class="tab-content">
+            <div class="contact-page">
+                <h2 data-lang="en">Contact Me</h2>
+                <h2 data-lang="fr">Contactez-moi</h2>
+
+                <div class="contact-info-card">
+                    <p><strong>Dr. Stéphanie Vanhamme</strong></p>
+                    <p>Vétérinaire</p>
+                    <p>Route de la Branvaude 54</p>
+                    <p>CH-1290 Chavannes-des-Bois</p>
+                    <p><strong>+41 78 339 15 03</strong></p>
+                    <p>Email: <a href="mailto:svanhamme87@gmail.com">svanhamme87@gmail.com</a></p>
+                </div>
+
+                <form action="https://formspree.io/f/xnnjzgjq" method="POST" class="contact-form">
+                    <label for="name" data-lang="en">Your Name</label>
+                    <label for="name" data-lang="fr" style="display:none;">Votre Nom</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email" data-lang="en">Email or Phone</label>
+                    <label for="email" data-lang="fr" style="display:none;">Email ou Téléphone</label>
+                    <input type="text" id="email" name="email" required>
+
+                    <label for="message" data-lang="en">Your Message</label>
+                    <label for="message" data-lang="fr" style="display:none;">Votre Message</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+
+                    <button type="submit" data-lang="en">Send Message</button>
+                    <button type="submit" data-lang="fr" style="display:none;">Envoyer le Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <footer>
-        <p>&copy; 2025 Dr. Stephanie Vanhamme | All rights reserved.</p>
+        <p>&copy; 2025 Dr. Stéphanie Vanhamme | All rights reserved.</p>
     </footer>
 </body>
 </html>
